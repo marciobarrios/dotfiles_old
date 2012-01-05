@@ -3,20 +3,23 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
+alias h=history
 
 # Tuenti
 alias sync="ruby /Users/marcio/Sites/clustersync.rb"
 
 # Mercurial
-alias hgpu = "hg pull -u"
-alias hgb = "hg branch"
-alias hgp = "hg push"
+alias hgpu="hg pull -u"
+alias hgb="hg branch"
+alias hgp="hg push"
+alias hgl="hg log -l 10 -b ." #10 last logs on current branch
 
 # Shortcuts
 alias d="cd ~/Dropbox"
 alias s="cd ~/Sites"
 alias g="git"
 alias v="vim"
+alias f="open . -R" #opens the current folder in finder
 
 # List all files colorized in long format, including dot files
 alias la="ls -Gla"
@@ -51,8 +54,8 @@ alias c="tr -d '\n' | pbcopy"
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 
 # Show/hide hidden files in Finder
-alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
+alias showfiles="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
+alias hidefiles="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
