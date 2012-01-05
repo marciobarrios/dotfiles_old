@@ -1,0 +1,35 @@
+# Create a new directory and enter it
+function md() {
+	mkdir -p "$@" && cd "$@"
+}
+
+# Start an HTTP server from a directory, optionally specifying the port
+function server() {
+	local port="${1:-8000}"
+	open "http://localhost:${port}/"
+	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+	python -c "import SimpleHTTPServer; import sys; sys.argv = [None, '$port']; SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map[''] = 'text/plain;charset=UTF-8'; SimpleHTTPServer.test();"
+}
+
+# Syntax-highlight JSON strings or files
+function json() {
+	if [ -p /dev/stdin ]; then
+		# piping, e.g. `echo '{"foo":42}' | json`
+		python -mjson.tool | pygmentize -l javascript
+	else
+		# e.g. `json '{"foo":42}'`
+		python -mjson.tool <<< "$*" | pygmentize -l javascript
+	fi
+}
+
+# Escape UTF-8 characters into their 3-byte format
+function escape() {
+	printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u)
+	echo # newline
+}
+
+# Decode \x{ABCD}-style Unicode escape sequences
+function unidecode() {
+	perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
+	echo # newline
+}

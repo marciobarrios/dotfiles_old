@@ -1,0 +1,3 @@
+# new groups for ack command
+--type-add=phtml=.phtml,.html
+--type-set=tuenti=.phtml,.html,.css
