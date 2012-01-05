@@ -10,7 +10,6 @@ alias sync="ruby /Users/marcio/Sites/clustersync.rb"
 # Mercurial
 alias hgpu = "hg pull -u"
 alias hgb = "hg branch"
-alias hgb = "hg branch"
 alias hgp = "hg push"
 
 # Shortcuts
